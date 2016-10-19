@@ -56,7 +56,7 @@ def search(bot, update):
 
     # Iterate over the allheadlines list and print each headline
     for hl in allheadlines:
-        bot.sendMessage(update.message.chat_id, text=update.message.text)
+        bot.sendMessage(update.message.chat_id, text=hl)
 
     return search
 
