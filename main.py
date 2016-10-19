@@ -56,8 +56,7 @@ def search(bot, update):
 
     # Iterate over the allheadlines list and print each headline
     for hl in allheadlines:
-        update.message.reply_text(hl)
-
+        bot.sendMessage(update.message.chat_id, text=update.message.text)
 
     return PHOTO
 
