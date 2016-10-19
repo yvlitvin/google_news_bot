@@ -6,6 +6,13 @@ import feedparser
 import urllib
 
 
+flood = 0
+def checkFlood(delay):
+   while 1:
+      global flood
+      flood = 0
+      time.sleep(60)
+
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.DEBUG)
@@ -58,9 +65,9 @@ def search(bot, update):
     # Iterate over the allheadlines list and print each headline
     for hl in allheadlines:
         print(hl)
-        bot.sendMessage(update.message.chat_id, text=hl)
+        update.message.reply_text(hl)
 
-    return main
+  #  return main
 
 
 
