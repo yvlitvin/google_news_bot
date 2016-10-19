@@ -27,30 +27,26 @@ def start(bot, update):
     return GENDER
 
 
+def parseRSS(rss_url):
+    return feedparser.parse(rss_url)
+
+
+def getHeadlines(rss_url):
+    headlines = []
+
+    feed = parseRSS(rss_url)
+    for newsitem in feed['items']:
+        headlines.append(newsitem['title'])
+        headlines.append(newsitem['link'])
+
+    return headlines
+
 def search(bot, update):
     user = update.message.from_user
     query = update.message.text
     encoded = urllib.parse.quote_plus(query)
     logger.info("Gender of %s: %s" % (user.first_name, query))
-    def parseRSS(rss_url):
-        return feedparser.parse(rss_url)
-
-    # Function grabs the rss feed headlines (titles) and returns them as a list
-    def getHeadlines(rss_url):
-        headlines = []
-
-        feed = parseRSS(rss_url)
-        for newsitem in feed['items']:
-            headlines.append(newsitem['title'])
-            headlines.append(newsitem['link'])
-
-        return headlines
-
-    # A list to hold all headlines
     allheadlines = []
-
-    # List of RSS feeds that we will fetch and combine
-
     newsurls = {'googlenews': 'https://news.google.com.ua/news?ned=ua_ua&hl=ua&q=' + encoded + '&cf=all&output=rss'}
     print(newsurls)
     # Iterate over the feed urls
