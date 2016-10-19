@@ -8,7 +8,7 @@ import urllib
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+                    level=logging.DEBUG)
 
 logger = logging.getLogger(__name__)
 
@@ -32,10 +32,6 @@ def search(bot, update):
     query = update.message.text
     encoded = urllib.parse.quote_plus(query)
     logger.info("Gender of %s: %s" % (user.first_name, query))
-
-    update.message.reply_text('I see! Please send me a photo of yourself, '
-                              'so I know what you look like, or send /skip if you don\'t want to.')
-
     def parseRSS(rss_url):
         return feedparser.parse(rss_url)
 
@@ -64,7 +60,7 @@ def search(bot, update):
 
     # Iterate over the allheadlines list and print each headline
     for hl in allheadlines:
-        print(hl)
+        update.message.reply_text(hl)
 
 
     return PHOTO
@@ -97,7 +93,7 @@ def main():
         states={
 
 
-            GENDER: [MessageHandler([Filters.text], search())]
+            GENDER: [MessageHandler([Filters.text], search)]
         },
 
         fallbacks=[CommandHandler('cancel', cancel)]
