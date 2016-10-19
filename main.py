@@ -60,7 +60,7 @@ def search(bot, update):
     for key, url in newsurls.items():
         # Call getHeadlines() and combine the returned headlines with allheadlines
         allheadlines.extend(getHeadlines(url))
-        print(allheadlines)
+        print('allheadlines')
 
     # Iterate over the allheadlines list and print each headline
     for hl in allheadlines:
