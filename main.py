@@ -45,7 +45,7 @@ def search(bot, update):
     user = update.message.from_user
     query = update.message.text
     encoded = urllib.parse.quote_plus(query)
-    logger.info("Gender of %s: %s" % (user.first_name, query))
+    logger.info("seacrch querry of %s: %s" % (user.first_name, query))
     allheadlines = []
     newsurls = {'googlenews': 'https://news.google.com.ua/news?ned=ua_ua&hl=ua&q=' + encoded + '&cf=all&output=rss'}
     print(newsurls)
@@ -53,9 +53,11 @@ def search(bot, update):
     for key, url in newsurls.items():
         # Call getHeadlines() and combine the returned headlines with allheadlines
         allheadlines.extend(getHeadlines(url))
+        print(allheadlines)
 
     # Iterate over the allheadlines list and print each headline
     for hl in allheadlines:
+        print(hl)
         bot.sendMessage(update.message.chat_id, text=hl)
 
     return search
@@ -93,7 +95,6 @@ def main():
 
         fallbacks=[CommandHandler('cancel', cancel)]
     )
-
     dp.add_handler(conv_handler)
 
     # log all errors
