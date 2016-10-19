@@ -58,7 +58,7 @@ def search(bot, update):
     for hl in allheadlines:
         bot.sendMessage(update.message.chat_id, text=update.message.text)
 
-    return PHOTO
+    return search
 
 
 
