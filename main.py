@@ -55,6 +55,8 @@ def search(bot, update):
     logger.info("seacrch querry of %s: %s" % (user.first_name, query))
     allheadlines = []
     d = feedparser.parse('https://news.google.com.ua/news?ned=ua_ua&hl=ua&q=' + encoded + '&cf=all&output=rss')
+    print(d)
+    print(d.entries)
     newsurls = {'googlenews': 'https://news.google.com.ua/news?ned=ua_ua&hl=ua&q=' + encoded + '&cf=all&output=rss'}
     print(newsurls)
     # Iterate over the feed urls
