@@ -54,13 +54,12 @@ def search(bot, update):
     encoded = urllib.parse.quote_plus(query)
     logger.info("seacrch querry of %s: %s" % (user.first_name, query))
     allheadlines = []
+    d = feedparser.parse('https://news.google.com.ua/news?ned=ua_ua&hl=ua&q=' + encoded + '&cf=all&output=rss')
     newsurls = {'googlenews': 'https://news.google.com.ua/news?ned=ua_ua&hl=ua&q=' + encoded + '&cf=all&output=rss'}
     print(newsurls)
     # Iterate over the feed urls
-    for key, url in newsurls.items():
-        # Call getHeadlines() and combine the returned headlines with allheadlines
-        allheadlines.extend(getHeadlines(url))
-        print('allheadlines')
+    for post in d.entries:
+        print(post.title + ": " + post.link + "")
 
     # Iterate over the allheadlines list and print each headline
     for hl in allheadlines:

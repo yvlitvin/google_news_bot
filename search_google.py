@@ -1,7 +1,12 @@
 import feedparser
 import urllib
-query = 'мост патона'
-encoded =  urllib.parse.quote_plus(query)
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
+
+query = 'міст патона'
+encoded = urllib.parse.quote_plus(query)
 # Function to fetch the rss feed and return the parsed RSS
 def parseRSS(rss_url):
     return feedparser.parse(rss_url)
