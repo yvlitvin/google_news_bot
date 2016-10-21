@@ -61,7 +61,7 @@ def search(bot, update):
     newsurls = {'googlenews': 'https://news.google.com.ua/news?ned=ua_ua&hl=ua&q=' + encoded + '&cf=all&output=rss'}
     #print(newsurls)
     # Iterate over the feed urls
-    for post in d.entries:
+    for post in d.entries[:5]:
        # print(post.title + ": " + post.link + "")
         update.message.reply_text(post.title + ": " + post.link + "")
 
