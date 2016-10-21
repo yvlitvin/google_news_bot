@@ -15,7 +15,7 @@ def checkFlood(delay):
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.DEBUG)
+                    level=logging.INFO)
 
 logger = logging.getLogger(__name__)
 
@@ -55,13 +55,14 @@ def search(bot, update):
     logger.info("seacrch querry of %s: %s" % (user.first_name, query))
     allheadlines = []
     d = feedparser.parse('https://news.google.com.ua/news?ned=ua_ua&hl=ua&q=' + encoded + '&cf=all&output=rss')
-    print(d)
-    print(d.entries)
+    #print(d)
+    #print(d.entries)
     newsurls = {'googlenews': 'https://news.google.com.ua/news?ned=ua_ua&hl=ua&q=' + encoded + '&cf=all&output=rss'}
-    print(newsurls)
+    #print(newsurls)
     # Iterate over the feed urls
     for post in d.entries:
-        print(post.title + ": " + post.link + "")
+       # print(post.title + ": " + post.link + "")
+        update.message.reply_text(post.title + ": " + post.link + "")
 
     # Iterate over the allheadlines list and print each headline
     for hl in allheadlines:
