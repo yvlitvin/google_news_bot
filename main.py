@@ -4,7 +4,8 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, Rege
 import logging
 import feedparser
 import urllib
-
+import sys
+sys.stdout = open('out.log', 'w')
 
 flood = 0
 def checkFlood(delay):
@@ -52,7 +53,7 @@ def search(bot, update):
     user = update.message.from_user
     query = update.message.text
     encoded = urllib.parse.quote_plus(query)
-    logger.info("seacrch querry of %s: %s" % (user.first_name, query))
+    logger.info("search query of %s: %s" % (user.first_name, query))
     allheadlines = []
     d = feedparser.parse('https://news.google.com.ua/news?ned=ua_ua&hl=ua&q=' + encoded + '&cf=all&output=rss')
     #print(d)
