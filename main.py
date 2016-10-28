@@ -23,31 +23,7 @@ logger = logging.getLogger(__name__)
 GENDER, PHOTO, LOCATION, BIO = range(4)
 
 
-# def start(bot, update):
-#     reply_keyboard = [['Boy', 'Girl', 'Other']]
-#
-#     update.message.reply_text(
-#         'Hi! My name is Professor Bot. I will hold a conversation with you. '
-#         'Send /cancel to stop talking to me.\n\n'
-#         'Are you a boy or a girl?',
-#         reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
-#
-#     return GENDER
 
-
-# def parseRSS(rss_url):
-#     return feedparser.parse(rss_url)
-#
-#
-# def getHeadlines(rss_url):
-#     headlines = []
-#
-#     feed = parseRSS(rss_url)
-#     for newsitem in feed['items']:
-#         headlines.append(newsitem['title'])
-#         headlines.append(newsitem['link'])
-#
-#     return headlines
 
 
 def search(bot, update):
