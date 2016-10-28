@@ -56,7 +56,7 @@ def search(bot, update):
     encoded = urllib.parse.quote_plus(query)
     logger.info("search query of %s: %s" % (user.first_name, query))
     allheadlines = []
-    d = feedparser.parse('https://news.google.com.ua/news?ned=ua_ua&hl=ua&q=' + encoded + '&cf=all&output=rss')
+    d = feedparser.parse('https://news.google.com.ua/news?ned=uk_ua&hl=ua&q=' + encoded + '&cf=all&output=rss')
     #print(d)
     #print(d.entries)
     newsurls = {'googlenews': 'https://news.google.com.ua/news?ned=ua_ua&hl=ua&q=' + encoded + '&cf=all&output=rss'}
