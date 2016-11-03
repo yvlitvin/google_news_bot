@@ -72,12 +72,12 @@ def main():
 
     # Add conversation handler with the states GENDER, PHOTO, LOCATION and BIO
     conv_handler = ConversationHandler(
-        entry_points=[MessageHandler([Filters.text], search)],
+        entry_points=[MessageHandler(Filters.text, search)],
 
         states={
 
 
-            GENDER: [MessageHandler([Filters.text], search)]
+            GENDER: [MessageHandler(Filters.text, search)]
         },
 
         fallbacks=[CommandHandler('cancel', cancel)]
